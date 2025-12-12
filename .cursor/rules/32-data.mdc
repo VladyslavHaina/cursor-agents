@@ -1,0 +1,29 @@
+---
+description: "Data standards (schemas, reproducibility, privacy, pipelines)"
+globs:
+  - "**/data/**"
+  - "**/datasets/**"
+  - "**/pipelines/**"
+  - "**/etl/**"
+  - "**/*.sql"
+  - "**/*.ipynb"
+  - "**/*.py"
+alwaysApply: false
+---
+
+## Data
+
+- Reproducibility:
+  - Pipelines should be idempotent and re-runnable.
+  - Pin dependencies and document dataset versions.
+
+- Schemas and migrations:
+  - Treat schemas as contracts; make changes intentionally.
+  - Prefer backward-compatible changes when possible.
+
+- Privacy and security:
+  - Minimize PII exposure; redact logs and samples.
+  - Enforce least privilege access to data stores.
+
+- Validation:
+  - Validate inputs/outputs (schemas, row counts, distribution checks) where practical.

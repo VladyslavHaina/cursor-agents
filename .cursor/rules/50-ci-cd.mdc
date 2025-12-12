@@ -1,0 +1,29 @@
+---
+description: "CI/CD standards (reproducible builds, safe deploys, secrets hygiene)"
+globs:
+  - ".github/workflows/**"
+  - ".gitlab-ci.yml"
+  - "azure-pipelines.yml"
+  - "Jenkinsfile"
+  - "**/ci/**"
+  - "**/pipelines/**"
+alwaysApply: false
+---
+
+## CI/CD
+
+- Reproducibility and supply chain:
+  - Pin action versions / build tooling where possible.
+  - Avoid downloading arbitrary scripts without verification.
+
+- Quality gates:
+  - Run formatting/linting/tests before deploy steps.
+  - Fail fast on obvious issues.
+
+- Secrets:
+  - Never print secrets.
+  - Use CI secret stores and scoped credentials.
+
+- Deploy safety:
+  - Prefer progressive delivery (canary/blue-green) for higher-risk services.
+  - Include a rollback path that can be executed quickly.

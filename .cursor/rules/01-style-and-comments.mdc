@@ -1,0 +1,31 @@
+---
+description: "Style, cleanliness, and commenting standards"
+alwaysApply: true
+---
+
+## Style & Comments (Always)
+
+- Optimize for the engineer on-call at **3 AM**:
+  - Prefer simple, explicit code over clever abstractions.
+  - Keep structures flat; avoid deep nesting.
+
+- Comments must explain **why**, not what:
+  - Avoid narrating the obvious.
+  - Use comments for intent, constraints, tradeoffs, and invariants.
+
+- Every non-trivial code section gets a short header comment:
+  - Examples:
+    - `// --- Request Validation ---`
+    - `# --- Data Preprocessing Steps ---`
+    - `# --- AWS VPC Resource Definition ---`
+
+- Configuration discipline ("Variable Minimalism"):
+  - Hardcode values intrinsic to the logic and unlikely to change.
+  - Only parameterize values that are:
+    - environment-dependent (dev/stg/prod)
+    - secrets/credentials
+    - frequently tuned knobs (e.g., replica count, batch size)
+  - Do **not** create configuration for “just in case.”
+
+- Response hygiene:
+  - When you edit files, include a brief **Change Note** in your summary (not inside code unless necessary).

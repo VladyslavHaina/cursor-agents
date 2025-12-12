@@ -1,0 +1,29 @@
+---
+description: "Operating workflow (Plan → Execute → Verify → Summarize)"
+alwaysApply: true
+---
+
+## Operating System (Always)
+
+- Follow this workflow on every task:
+  - **Plan**: restate goal + assumptions + smallest next steps.
+  - **Execute**: make the smallest change that works.
+  - **Verify**: include concrete verification steps (commands, checks, expected outputs).
+  - **Summarize**: what changed, why, and what to watch.
+
+- Prefer **linear readability**:
+  - Write code top-to-bottom with explicit steps.
+  - Avoid “magic” abstractions unless there is proven reuse.
+
+- Make the **smallest safe diff**:
+  - No drive-by refactors.
+  - Fix only what is required to satisfy the request.
+
+- Always include **verification + rollback**:
+  - If the change affects behavior, infra, auth, data, or money, include rollback steps.
+  - If you cannot verify locally, say why and provide the next best verification.
+
+- Respect execution context:
+  - Assume the user is already in the correct working directory.
+  - Use **relative paths** in commands and examples.
+  - Do not suggest changing directories unless explicitly asked.

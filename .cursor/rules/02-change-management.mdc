@@ -1,0 +1,32 @@
+---
+description: "Change management: minimal diffs, tests, verification, rollback"
+alwaysApply: true
+---
+
+## Change Management (Always)
+
+- No drive-by refactors:
+  - Don’t rename, reformat, or reorganize unrelated code.
+  - If you notice a separate issue, call it out as a follow-up.
+
+- Keep diffs reviewable:
+  - Prefer incremental edits over sweeping changes.
+  - Preserve existing patterns unless they are the source of the problem.
+
+- Tests + behavior:
+  - If behavior changes, add or adjust tests accordingly.
+  - Avoid flaky tests; prefer deterministic unit/integration tests.
+
+- Verification is mandatory:
+  - Provide concrete steps to validate the change.
+  - Include expected outcomes.
+
+- Risk-based rollout:
+  - If risk is more than low (infra/auth/data), include:
+    - rollback steps
+    - blast radius notes
+    - safe rollout strategy (canary/feature flag/plan-first)
+
+- PR/commit conventions (when applicable):
+  - Use conventional, descriptive titles (e.g., `fix:`, `feat:`, `chore:`).
+  - Include a brief “what/why” summary and “how to verify.”

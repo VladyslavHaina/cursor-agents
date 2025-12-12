@@ -1,0 +1,31 @@
+---
+description: "Backend standards (APIs, errors, tests, performance, operability)"
+globs:
+  - "**/*.go"
+  - "**/backend/**/*.ts"
+  - "**/backend/**/*.js"
+  - "**/server/**/*.ts"
+  - "**/server/**/*.js"
+  - "**/api/**/*.ts"
+  - "**/api/**/*.js"
+alwaysApply: false
+---
+
+## Backend
+
+- API design:
+  - Validate inputs at boundaries; fail closed.
+  - Use stable, explicit error shapes (status/code/message) and avoid leaking internals.
+  - Prefer idempotent operations where applicable.
+
+- Reliability:
+  - Respect timeouts/cancellation (e.g., context propagation).
+  - Handle retries carefully (avoid duplicate side-effects).
+
+- Observability:
+  - Structured logs with correlation IDs.
+  - Redact secrets and sensitive fields.
+
+- Testing:
+  - Add/adjust tests when behavior changes.
+  - Keep tests deterministic; minimize external dependencies.

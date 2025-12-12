@@ -1,0 +1,40 @@
+---
+description: "Kubernetes manifest standards (security, probes, resources, operability)"
+globs:
+  - "**/k8s/**/*.yml"
+  - "**/k8s/**/*.yaml"
+  - "**/kubernetes/**/*.yml"
+  - "**/kubernetes/**/*.yaml"
+  - "**/manifests/**/*.yml"
+  - "**/manifests/**/*.yaml"
+  - "**/overlays/**/*.yml"
+  - "**/overlays/**/*.yaml"
+  - "**/bases/**/*.yml"
+  - "**/bases/**/*.yaml"
+  - "**/*.k8s.yml"
+  - "**/*.k8s.yaml"
+alwaysApply: false
+---
+
+## Kubernetes
+
+- Operability first:
+  - Include readiness/liveness probes when applicable.
+  - Set resource requests/limits (avoid BestEffort unless justified).
+  - Use rolling updates and safe disruption settings where appropriate.
+
+- Security defaults:
+  - Run as non-root; set `securityContext` explicitly.
+  - Avoid privileged containers and host mounts unless required.
+  - Use RBAC with least privilege.
+
+- Reliability:
+  - Prefer explicit timeouts and graceful shutdown (`terminationGracePeriodSeconds`).
+  - Use PodDisruptionBudgets for critical services.
+
+- Deploy hygiene:
+  - Avoid mutable image tags like `latest`.
+  - Use standard labels/annotations for ownership and traceability.
+
+- Verification:
+  - Provide `kubectl apply --dry-run=server` and a minimal smoke check.

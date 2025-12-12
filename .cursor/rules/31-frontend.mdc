@@ -1,0 +1,28 @@
+---
+description: "Frontend standards (accessibility, correctness, performance, maintainability)"
+globs:
+  - "**/*.tsx"
+  - "**/*.jsx"
+  - "**/frontend/**/*.ts"
+  - "**/frontend/**/*.js"
+  - "**/ui/**/*.ts"
+  - "**/ui/**/*.js"
+alwaysApply: false
+---
+
+## Frontend
+
+- Accessibility is not optional:
+  - Use semantic HTML, labels, keyboard navigation, and sensible focus management.
+
+- Correctness and resilience:
+  - Handle loading/error/empty states explicitly.
+  - Avoid state leaks and stale async updates.
+
+- Performance:
+  - Avoid unnecessary rerenders; prefer memoization only when measured.
+  - Keep bundles lean; avoid dependencies for minor utilities.
+
+- Testing:
+  - Add/adjust tests for behavior changes.
+  - Prefer component/unit tests for logic; reserve e2e for critical paths.

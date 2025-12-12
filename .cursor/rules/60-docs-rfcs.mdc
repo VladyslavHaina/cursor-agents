@@ -1,0 +1,26 @@
+---
+description: "Docs/RFC/ADR standards (decisions, runbooks, and operational clarity)"
+globs:
+  - "**/*.md"
+  - "**/docs/**"
+  - "**/rfcs/**"
+  - "**/adrs/**"
+  - "**/runbooks/**"
+alwaysApply: false
+---
+
+## Docs / RFCs / ADRs
+
+- Prefer short, decision-focused writing:
+  - Write **why**, not a full tutorial.
+  - Include alternatives considered and tradeoffs.
+
+- ADR minimum template:
+  - Context
+  - Decision
+  - Alternatives
+  - Consequences
+
+- Runbooks:
+  - Include: symptoms, how to verify, mitigation steps, rollback steps.
+  - Prefer copy/pasteable commands.

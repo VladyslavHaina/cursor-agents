@@ -1,0 +1,43 @@
+---
+description: "Terraform standards (safe rollouts, least privilege, minimal module interfaces)"
+globs:
+  - "**/*.tf"
+  - "**/*.tfvars"
+  - "**/*.tf.json"
+  - "**/*.tftpl"
+alwaysApply: false
+---
+
+## Terraform
+
+- Prefer the **smallest change that works**; no unrelated refactors.
+
+- Versioning and reproducibility:
+  - Pin `terraform.required_version` and `required_providers`.
+  - Prefer explicit provider configuration (regions/aliases) over implicit defaults.
+
+- State and safety:
+  - Use remote state + locking for shared environments.
+  - Prefer **plan-first** workflows (`plan` → review → `apply`).
+  - Avoid `apply` changes you cannot explain line-by-line.
+
+- Modules (only when it helps):
+  - Use modules for **distinct logical resources** (e.g., Networking, EKS Cluster).
+  - Do not wrap single resources in a “module” unless reused.
+  - Keep the module interface small (don’t parameterize everything).
+
+- IAM and security:
+  - Enforce least privilege; document *why* permissions are needed.
+  - Avoid wildcards unless constrained by conditions and justified.
+
+- Naming and tags:
+  - Use `locals` for naming conventions.
+  - Standardize tags/labels where supported.
+
+- Outputs and docs:
+  - Add outputs intentionally (consumer-focused; don’t expose everything).
+  - For non-trivial modules, include a short README: inputs/outputs/example/verify/rollback.
+
+- Verification:
+  - Run formatting and validation (`terraform fmt`, `terraform validate`).
+  - If appropriate, include a `terraform plan` step and review notes.

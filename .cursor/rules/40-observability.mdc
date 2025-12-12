@@ -1,0 +1,29 @@
+---
+description: "Observability standards (logs, metrics, traces, SLOs, runbooks)"
+globs:
+  - "**/observability/**"
+  - "**/monitoring/**"
+  - "**/grafana/**"
+  - "**/prometheus/**"
+  - "**/alertmanager/**"
+  - "**/otel/**"
+  - "**/*otel*.yml"
+  - "**/*otel*.yaml"
+alwaysApply: false
+---
+
+## Observability
+
+- Logs:
+  - Structured logs; include request IDs / correlation IDs.
+  - Redact secrets and PII.
+
+- Metrics:
+  - Define a small, actionable set (latency, error rate, saturation, throughput).
+  - Prefer alerts tied to user impact (SLO-based) over noisy symptoms.
+
+- Tracing:
+  - Propagate trace context across service boundaries.
+
+- Runbooks:
+  - For critical alerts, include a short runbook: how to verify, mitigate, and rollback.

@@ -1,0 +1,20 @@
+# --- OS / filesystem noise ---
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# --- Editor noise ---
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# --- Cursor repo hygiene ---
+# Keep only the portable project context (rules + commands) under version control.
+.cursor/*
+!.cursor/rules/
+!.cursor/rules/**
+!.cursor/commands/
+!.cursor/commands/**
+

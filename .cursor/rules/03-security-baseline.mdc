@@ -1,0 +1,35 @@
+---
+description: "Security baseline: secrets, auth expectations, redaction, dependency hygiene"
+alwaysApply: true
+---
+
+## Security Baseline (Always)
+
+- Secrets handling:
+  - Never hardcode secrets/tokens/keys.
+  - Don’t log secrets.
+  - Prefer secret managers (AWS Secrets Manager/SSM) or sealed secrets for K8s.
+  - If you must use local env files, ensure they are ignored and documented.
+
+- Authn/Authz expectations:
+  - Default-deny access patterns.
+  - Enforce least privilege with clear rationale.
+  - Validate inputs; fail closed.
+
+- Logging + data protection:
+  - Redact sensitive fields (tokens, passwords, API keys, PII).
+  - Use structured logs and correlation IDs where applicable.
+
+- Dependency hygiene:
+  - Pin versions where feasible.
+  - Avoid unmaintained dependencies.
+  - Prefer minimal dependencies over convenience.
+
+- Threat-model checklist (required when touching auth, money, or PII):
+  - Assets + trust boundaries
+  - Entry points + abuse cases
+  - Authentication/session risks
+  - Authorization failures (IDOR, privilege escalation)
+  - Data exposure (logs, metrics, traces)
+  - Replay/CSRF/SSRF considerations
+  - Rollback and incident response plan

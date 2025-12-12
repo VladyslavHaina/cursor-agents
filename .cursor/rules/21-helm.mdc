@@ -1,0 +1,28 @@
+---
+description: "Helm chart standards (minimal values, predictable templates, safe upgrades)"
+globs:
+  - "**/Chart.yaml"
+  - "**/values.yaml"
+  - "**/templates/**/*.yml"
+  - "**/templates/**/*.yaml"
+  - "**/charts/**"
+alwaysApply: false
+---
+
+## Helm
+
+- Values minimalism:
+  - Expose only high-level knobs (replicas, image tag, resources, env overrides).
+  - Do not template internal ConfigMaps unless required for environment injection.
+
+- Template hygiene:
+  - Keep templates readable; avoid excessive helper indirection.
+  - Use standard labels and selectors.
+  - Avoid surprising defaults; document non-obvious behaviors.
+
+- Upgrade safety:
+  - Make changes compatible with `helm upgrade` (immutable fields awareness).
+  - If schema changes are needed, call out migration/rollback steps.
+
+- Verification:
+  - Provide `helm template` / `helm lint` (when available) and a basic render check.

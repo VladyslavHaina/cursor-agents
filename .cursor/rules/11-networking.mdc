@@ -1,0 +1,42 @@
+---
+description: "Networking standards (segmentation, egress control, SG/NACL hygiene)"
+globs:
+  - "**/network/**"
+  - "**/networking/**"
+  - "**/vpc/**"
+  - "**/vpn/**"
+  - "**/subnet/**"
+  - "**/route/**"
+  - "**/firewall/**"
+  - "**/*network*.tf"
+  - "**/*vpc*.tf"
+  - "**/*subnet*.tf"
+  - "**/*route*.tf"
+  - "**/*security_group*.tf"
+  - "**/*nacl*.tf"
+  - "**/*waf*.tf"
+alwaysApply: false
+---
+
+## Networking
+
+- Default to **private** networking:
+  - Private subnets for workloads; public subnets only for edge components.
+  - Minimize inbound exposure; prefer ALB/NLB + WAF where appropriate.
+
+- Segmentation:
+  - Separate tiers (edge/app/data) using subnets + security groups.
+  - Separate environments (dev/stg/prod) with clear boundaries.
+
+- Security groups / firewall rules:
+  - Avoid `0.0.0.0/0` inbound unless explicitly required and justified.
+  - Constrain egress where practical (destinations/ports).
+  - Prefer referencing security groups / prefix lists over broad CIDRs.
+
+- Routing:
+  - Keep route tables explicit and readable.
+  - Document non-obvious routes (peering/TGW/VPN/egress-only paths).
+
+- Observability and auditability:
+  - Enable flow logs where needed; ensure log retention meets requirements.
+  - Make it easy to answer: “what can talk to what, and why?”
