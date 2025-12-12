@@ -26,3 +26,4 @@ alwaysApply: false
 
 - Verification:
   - Provide `helm template` / `helm lint` (when available) and a basic render check.
+  - When possible, include a diff (`helm diff upgrade`, if available) or an upgrade dry-run (`helm upgrade --dry-run --debug`) before applying.

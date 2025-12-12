@@ -23,6 +23,14 @@ alwaysApply: true
   - If the change affects behavior, infra, auth, data, or money, include rollback steps.
   - If you cannot verify locally, say why and provide the next best verification.
 
+- Admin-capable execution (safety-gated):
+  - Before any `apply/create/update/delete`, explicitly confirm the exact target (account/cluster/context/namespace/selectors).
+  - Prefer read-only discovery first, then use `diff`/`plan`/`--dry-run` equivalents before making changes.
+  - For destructive actions, require explicit user confirmation and provide rollback steps first.
+
+- Tooling bootstrap:
+  - If required tooling is missing, install it via official, pinned, reproducible methods and verify versions before use.
+
 - Respect execution context:
   - Assume the user is already in the correct working directory.
   - Use **relative paths** in commands and examples.

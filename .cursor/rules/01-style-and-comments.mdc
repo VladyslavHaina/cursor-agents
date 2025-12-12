@@ -19,6 +19,10 @@ alwaysApply: true
     - `# --- Data Preprocessing Steps ---`
     - `# --- AWS VPC Resource Definition ---`
 
+- Avoid unnecessary indirection:
+  - Prefer explicit code/templates over helper stacks.
+  - Only add helpers when there is clear reuse and it improves readability (don’t hide intent).
+
 - Configuration discipline ("Variable Minimalism"):
   - Hardcode values intrinsic to the logic and unlikely to change.
   - Only parameterize values that are:

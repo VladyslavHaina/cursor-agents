@@ -27,6 +27,11 @@ alwaysApply: true
     - blast radius notes
     - safe rollout strategy (canary/feature flag/plan-first)
 
+- Admin / destructive operations:
+  - Use `diff`/`plan`/`--dry-run` equivalents before applying changes.
+  - Require explicit user confirmation for deletes, irreversible changes, or production writes.
+  - Execute in small batches and verify after each batch.
+
 - PR/commit conventions (when applicable):
   - Use conventional, descriptive titles (e.g., `fix:`, `feat:`, `chore:`).
   - Include a brief “what/why” summary and “how to verify.”

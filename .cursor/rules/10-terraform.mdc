@@ -20,6 +20,8 @@ alwaysApply: false
   - Use remote state + locking for shared environments.
   - Prefer **plan-first** workflows (`plan` → review → `apply`).
   - Avoid `apply` changes you cannot explain line-by-line.
+  - Prefer applying a reviewed plan (e.g., `terraform plan -out=...` then `terraform apply ...`).
+  - Avoid `-target` unless it is an explicit break-glass scenario with written rationale.
 
 - Modules (only when it helps):
   - Use modules for **distinct logical resources** (e.g., Networking, EKS Cluster).

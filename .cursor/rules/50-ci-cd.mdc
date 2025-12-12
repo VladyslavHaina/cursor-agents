@@ -12,6 +12,8 @@ alwaysApply: false
 
 ## CI/CD
 
+- Applies equally to GitHub Actions, GitLab CI, Jenkins, and Bitbucket Pipelines.
+
 - Reproducibility and supply chain:
   - Pin action versions / build tooling where possible.
   - Avoid downloading arbitrary scripts without verification.

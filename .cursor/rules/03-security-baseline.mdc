@@ -25,6 +25,10 @@ alwaysApply: true
   - Avoid unmaintained dependencies.
   - Prefer minimal dependencies over convenience.
 
+- Tooling / supply-chain hygiene:
+  - Prefer official package managers/releases; pin versions and verify checksums/signatures when practical.
+  - Avoid unpinned “curl | bash” installers and arbitrary scripts from the internet.
+
 - Threat-model checklist (required when touching auth, money, or PII):
   - Assets + trust boundaries
   - Entry points + abuse cases

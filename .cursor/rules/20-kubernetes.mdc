@@ -37,4 +37,6 @@ alwaysApply: false
   - Use standard labels/annotations for ownership and traceability.
 
 - Verification:
-  - Provide `kubectl apply --dry-run=server` and a minimal smoke check.
+  - Confirm target context/namespace before any write.
+  - Provide `kubectl diff` (when available) or `kubectl apply --dry-run=server` and a minimal smoke check.
+  - For destructive actions (delete/scale to zero), require explicit confirmation and document rollback first.
