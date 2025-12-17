@@ -8,15 +8,20 @@ globs:
 alwaysApply: false
 ---
 
-## Terraform
+## Terraform (Infra)
 
 - Prefer the **smallest change that works**; no unrelated refactors.
+
+- Generated artifacts:
+  - Do not hand-edit files under `.terraform/` (cached modules, provider binaries, local artifacts).
+  - Treat `.terraform.lock.hcl` as generated; if it changes, call out why and keep provider versions pinned.
 
 - Versioning and reproducibility:
   - Pin `terraform.required_version` and `required_providers`.
   - Prefer explicit provider configuration (regions/aliases) over implicit defaults.
 
-- State and safety:
+- Targeting, state, and safety:
+  - Confirm the exact environment and backend before planning/applying.
   - Use remote state + locking for shared environments.
   - Prefer **plan-first** workflows (`plan` → review → `apply`).
   - Avoid `apply` changes you cannot explain line-by-line.

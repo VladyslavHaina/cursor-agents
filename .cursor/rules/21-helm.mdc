@@ -11,6 +11,9 @@ alwaysApply: false
 
 ## Helm
 
+- GitOps-aware by default:
+  - If Argo CD/Flux manages the release, prefer Git changes and controller sync over imperative `helm upgrade` in production.
+
 - Values minimalism:
   - Expose only high-level knobs (replicas, image tag, resources, env overrides).
   - Do not template internal ConfigMaps unless required for environment injection.
@@ -23,6 +26,7 @@ alwaysApply: false
 - Upgrade safety:
   - Make changes compatible with `helm upgrade` (immutable fields awareness).
   - If schema changes are needed, call out migration/rollback steps.
+  - Call out CRD behavior explicitly when relevant (Helm v3 does not upgrade CRDs on normal upgrades).
 
 - Verification:
   - Provide `helm template` / `helm lint` (when available) and a basic render check.

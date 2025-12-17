@@ -18,6 +18,9 @@ alwaysApply: false
 
 ## Kubernetes
 
+- GitOps-aware by default:
+  - If Argo CD/Flux manages these manifests, treat **Git as source of truth** (make changes in Git; avoid manual `kubectl apply` except explicit break-glass with follow-up reconciliation).
+
 - Operability first:
   - Include readiness/liveness probes when applicable.
   - Set resource requests/limits (avoid BestEffort unless justified).

@@ -1,4 +1,4 @@
-# Flow: End-to-End Feature Delivery (Architect → Implement → Secure → Ship)
+# Flow: End-to-End Delivery (Plan → Implement → Secure → Ship)
 
 ## Goal
 Deliver a feature with clear architecture, minimal diff, strong verification, and a rollback plan.
@@ -9,29 +9,25 @@ Deliver a feature with clear architecture, minimal diff, strong verification, an
 - Risk level (auth/money/data/infra) and compliance constraints
 
 ## Orchestration steps
-1) **Architecture**
+1) **Scope + minimal plan**
    - Restate requirements + assumptions
-   - Provide 2–3 options + tradeoffs
-   - Choose a recommendation and draft ADR
+   - Call out risk + blast radius (infra/auth/data/money)
+   - Choose the smallest design that satisfies requirements (ADR if it’s a real decision)
 
-2) **Implementation plan**
+2) **Implementation**
    - Break work into small, reviewable steps
-   - Identify tests to add/adjust
+   - Prefer plan/diff-first changes (Terraform plan, `kubectl diff`, Helm dry-run, Argo CD diff)
 
-3) **Backend (if applicable)**
-   - Implement API/data changes with tests
+3) **Domain delivery (pick what applies)**
+   - Infra: AWS/Terraform/networking changes
+   - Delivery: Kubernetes/Helm/GitOps/Argo CD changes
+   - Platform: CI/CD + environments wiring (if needed)
 
-4) **Frontend (if applicable)**
-   - Implement UI with explicit loading/error states
+4) **Security overlay (required for auth/money/PII/public exposure/production)**
+   - Lightweight threat model + concrete mitigations
 
-5) **Security review (required for auth/money/PII)**
-   - Threat model checklist + concrete mitigations
-
-6) **Platform/Deployment (if applicable)**
-   - CI/CD, env vars/secrets, deploy steps
-
-7) **Docs + Runbook**
-   - How to verify, operate, and rollback
+5) **Docs + Runbook**
+   - How to verify, mitigate, and rollback
 
 ## Output format
 ### Plan

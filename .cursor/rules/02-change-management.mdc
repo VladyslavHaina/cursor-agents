@@ -13,6 +13,12 @@ alwaysApply: true
   - Prefer incremental edits over sweeping changes.
   - Preserve existing patterns unless they are the source of the problem.
 
+- Repo hygiene (folders stay clean):
+  - Put new files in the most obvious existing folder; avoid creating new top-level folders unless truly necessary.
+  - Keep structure shallow and predictable; avoid deep nesting and “misc/tmp” dumping grounds.
+  - If you must move/rename: do it in small batches, update all references, and include verification + rollback steps.
+  - Don’t leave behind stray scratch files or duplicated configs; remove/relocate anything you introduce that isn’t part of the final solution.
+
 - Tests + behavior:
   - If behavior changes, add or adjust tests accordingly.
   - Avoid flaky tests; prefer deterministic unit/integration tests.

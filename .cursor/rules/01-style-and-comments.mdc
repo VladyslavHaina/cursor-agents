@@ -12,12 +12,14 @@ alwaysApply: true
 - Comments must explain **why**, not what:
   - Avoid narrating the obvious.
   - Use comments for intent, constraints, tradeoffs, and invariants.
+  - Keep comments **short and high-signal** (prefer 1–2 lines). If the reasoning is longer, write an ADR/RFC/runbook note instead of a long inline comment.
 
 - Every non-trivial code section gets a short header comment:
   - Examples:
     - `// --- Request Validation ---`
     - `# --- Data Preprocessing Steps ---`
     - `# --- AWS VPC Resource Definition ---`
+  - Keep header comments to **one line**.
 
 - Avoid unnecessary indirection:
   - Prefer explicit code/templates over helper stacks.
@@ -33,3 +35,7 @@ alwaysApply: true
 
 - Response hygiene:
   - When you edit files, include a brief **Change Note** in your summary (not inside code unless necessary).
+
+- Clean code hygiene:
+  - Prefer deleting dead/commented-out code over leaving it in place (history should live in version control).
+  - Avoid “temporary” debug prints/logs unless they are part of an intentional, documented troubleshooting change.

@@ -24,6 +24,10 @@ alwaysApply: false
   - Private subnets for workloads; public subnets only for edge components.
   - Minimize inbound exposure; prefer ALB/NLB + WAF where appropriate.
 
+- Connectivity intent (make it auditable):
+  - Document allowed flows with a small table (source → destination → port/proto → enforcement).
+  - Prefer identity-based rules (SG→SG, prefix lists, label selectors) over broad CIDRs.
+
 - Segmentation:
   - Separate tiers (edge/app/data) using subnets + security groups.
   - Separate environments (dev/stg/prod) with clear boundaries.
@@ -40,3 +44,6 @@ alwaysApply: false
 - Observability and auditability:
   - Enable flow logs where needed; ensure log retention meets requirements.
   - Make it easy to answer: “what can talk to what, and why?”
+
+- Verification:
+  - Include at least one positive connectivity test (allowed path) and one negative test (disallowed path) when tightening rules.
